@@ -4,20 +4,13 @@ import * as React from 'react'
 import Container from './index.style'
 
 export default function Main(props: {
-  header: any,
-  footer: any,
+  header: () => any,
+  footer: () => any,
   children: any,
   options?: {},
   mainAttrs: {},
 }) {
-  const {
-    header: Header,
-    footer: Footer,
-    options: opt,
-    mainAttrs,
-    children,
-    ...attrs
-  } = props
+  const { header, footer, options: opt, mainAttrs, children, ...attrs } = props
 
   const options = opt || {}
 
@@ -29,9 +22,9 @@ export default function Main(props: {
         styles: options.styles || {},
       }}
     >
-      <Header />
+      {header()}
       <main {...mainAttrs}>{children}</main>
-      <Footer />
+      {footer()}
     </Container>
   )
 }

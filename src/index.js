@@ -23,7 +23,7 @@ function Footer() {
 
 function App() {
   return (
-    <Main header={Header} footer={Footer}>
+    <Main header={() => <Header />} footer={() => <Footer />}>
       <div>
         <p>All my other content goes here...</p>
 
